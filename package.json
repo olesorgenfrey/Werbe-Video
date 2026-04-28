@@ -6,7 +6,8 @@
   "scripts": {
     "start": "remotion studio",
     "build": "remotion render WebsiteHookIntro out/WebsiteHookIntro.mp4",
-    "render": "remotion render WebsiteHookIntro out/WebsiteHookIntro.mp4"
+    "render": "remotion render WebsiteHookIntro out/WebsiteHookIntro.mp4",
+    "preview:build": "vite build"
   },
   "remotion": {
     "entryPoint": "src/index.ts"
@@ -20,12 +21,15 @@
   "license": "ISC",
   "dependencies": {
     "@remotion/cli": "4.0.452",
+    "@remotion/player": "^4.0.452",
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "remotion": "4.0.452"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3"
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.10"
   }
 }

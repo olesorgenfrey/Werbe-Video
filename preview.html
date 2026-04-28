@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebsiteHookIntro – Vorschau</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        background: #0A0A0A;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: #fff;
+        gap: 24px;
+        padding: 40px 20px;
+      }
+      h1 {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: #fff;
+      }
+      .badge {
+        font-size: 13px;
+        color: #3B82F6;
+        background: rgba(59,130,246,0.12);
+        border: 1px solid rgba(59,130,246,0.3);
+        padding: 4px 12px;
+        border-radius: 100px;
+        font-weight: 600;
+      }
+      #preview-root {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 0 60px rgba(59,130,246,0.2), 0 32px 80px rgba(0,0,0,0.6);
+        border: 1px solid #1E1E2E;
+      }
+    </style>
+  </head>
+  <body>
+    <span class="badge">Remotion · TikTok/Reels/Shorts</span>
+    <h1>WebsiteHookIntro – 8s Vorschau</h1>
+    <div id="preview-root"></div>
+    <script type="module" src="/src/preview-entry.tsx"></script>
+  </body>
+</html>
