@@ -131,7 +131,7 @@ export const Scene2Problem: React.FC = () => {
               style={{
                 marginTop: 16,
                 height: 6,
-                backgroundColor: '#EF4444',
+                backgroundColor: COLORS.accent,
                 borderRadius: 3,
                 width: interpolate(localFrame, [newTextStart + NEW_TEXT.length * 2.0, newTextStart + NEW_TEXT.length * 2.0 + 16], [0, 700], {
                   extrapolateLeft: 'clamp',

@@ -54,10 +54,10 @@ export const FakeWebsiteModern: React.FC<FakeWebsiteModernProps> = ({ localFrame
     <div
       style={{
         width: 700,
-        backgroundColor: '#0F0F13',
+        backgroundColor: COLORS.bg,
         borderRadius: 20,
         overflow: 'hidden',
-        border: '1px solid #2A2A3A',
+        border: `1px solid ${COLORS.dark}`,
         boxShadow: `0 0 60px ${COLORS.accent}22`,
       }}
     >
@@ -68,7 +68,7 @@ export const FakeWebsiteModern: React.FC<FakeWebsiteModernProps> = ({ localFrame
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '18px 28px',
-          borderBottom: '1px solid #1E1E2E',
+          borderBottom: `1px solid ${COLORS.dark}`,
           transform: `translateY(${navY}px)`,
         }}
       >
@@ -79,14 +79,14 @@ export const FakeWebsiteModern: React.FC<FakeWebsiteModernProps> = ({ localFrame
               height: 32,
               borderRadius: 8,
               backgroundColor: COLORS.accent,
-              boxShadow: `0 0 16px ${COLORS.accent}88`,
+              boxShadow: `0 0 16px ${COLORS.accent}66`,
             }}
           />
-          <span style={{ color: '#FFF', fontSize: 20, fontWeight: 700 }}>studio</span>
+          <span style={{ color: COLORS.text, fontSize: 20, fontWeight: 700 }}>studio</span>
         </div>
         <div style={{ display: 'flex', gap: 24 }}>
           {['Features', 'Preise', 'Kontakt'].map((item) => (
-            <span key={item} style={{ color: '#888', fontSize: 16, fontWeight: 500 }}>
+            <span key={item} style={{ color: COLORS.gray, fontSize: 16, fontWeight: 500 }}>
               {item}
             </span>
           ))}
@@ -96,7 +96,7 @@ export const FakeWebsiteModern: React.FC<FakeWebsiteModernProps> = ({ localFrame
             padding: '8px 20px',
             backgroundColor: COLORS.accent,
             borderRadius: 8,
-            color: '#FFF',
+            color: COLORS.bg,
             fontSize: 15,
             fontWeight: 600,
           }}
@@ -117,7 +117,7 @@ export const FakeWebsiteModern: React.FC<FakeWebsiteModernProps> = ({ localFrame
           style={{
             display: 'inline-block',
             padding: '5px 14px',
-            backgroundColor: `${COLORS.accent}22`,
+            backgroundColor: `${COLORS.accent}18`,
             border: `1px solid ${COLORS.accent}44`,
             borderRadius: 100,
             color: COLORS.accent,
@@ -128,12 +128,12 @@ export const FakeWebsiteModern: React.FC<FakeWebsiteModernProps> = ({ localFrame
         >
           ✦ Neue Version verfügbar
         </div>
-        <div style={{ color: '#FFF', fontSize: 36, fontWeight: 900, letterSpacing: -1, lineHeight: 1.15 }}>
+        <div style={{ color: COLORS.text, fontSize: 36, fontWeight: 900, letterSpacing: -1, lineHeight: 1.15 }}>
           Websites die
           <br />
           <span style={{ color: COLORS.accent }}>wirklich verkaufen.</span>
         </div>
-        <div style={{ color: '#888', fontSize: 18, marginTop: 14, lineHeight: 1.5 }}>
+        <div style={{ color: COLORS.gray, fontSize: 18, marginTop: 14, lineHeight: 1.5 }}>
           Schnell. Modern. Automatisch.
         </div>
 
@@ -153,10 +153,10 @@ export const FakeWebsiteModern: React.FC<FakeWebsiteModernProps> = ({ localFrame
               padding: '14px 28px',
               backgroundColor: COLORS.accent,
               borderRadius: 10,
-              color: '#FFF',
+              color: COLORS.bg,
               fontSize: 17,
               fontWeight: 700,
-              boxShadow: `0 0 24px ${COLORS.accent}55`,
+              boxShadow: `0 0 24px ${COLORS.accent}44`,
             }}
           >
             Jetzt starten →
@@ -165,9 +165,9 @@ export const FakeWebsiteModern: React.FC<FakeWebsiteModernProps> = ({ localFrame
             style={{
               padding: '14px 28px',
               backgroundColor: 'transparent',
-              border: '1.5px solid #333',
+              border: `1.5px solid ${COLORS.dark}`,
               borderRadius: 10,
-              color: '#AAA',
+              color: COLORS.gray,
               fontSize: 17,
               fontWeight: 600,
             }}
@@ -188,20 +188,20 @@ export const FakeWebsiteModern: React.FC<FakeWebsiteModernProps> = ({ localFrame
             key={label}
             style={{
               flex: 1,
-              backgroundColor: '#161620',
-              border: '1px solid #252535',
+              backgroundColor: COLORS.bg,
+              border: `1px solid ${COLORS.dark}`,
               borderRadius: 12,
               padding: '16px 18px',
               opacity,
             }}
           >
             <div style={{ fontSize: 22, marginBottom: 8 }}>{icon}</div>
-            <div style={{ color: '#FFF', fontSize: 17, fontWeight: 700 }}>{label}</div>
+            <div style={{ color: COLORS.text, fontSize: 17, fontWeight: 700 }}>{label}</div>
             <div
               style={{
                 width: '70%',
                 height: 6,
-                backgroundColor: '#252535',
+                backgroundColor: COLORS.dark,
                 borderRadius: 3,
                 marginTop: 8,
               }}

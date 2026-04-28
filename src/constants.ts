@@ -2,14 +2,14 @@ export const FPS = 30;
 export const DURATION_FRAMES = 480; // 16 seconds
 
 export const COLORS = {
-  bg: '#0A0A0A',
-  text: '#FFFFFF',
-  accent: '#3B82F6',
-  accentDim: 'rgba(59,130,246,0.18)',
-  gray: '#888888',
-  grayLight: '#CCCCCC',
-  dark: '#111111',
-  darker: '#0D0D0D',
+  bg: '#F5EFE6',
+  text: '#1A1A1A',
+  accent: '#C4512D',
+  accentDim: 'rgba(196,81,45,0.18)',
+  gray: '#B8B0A4',
+  grayLight: '#B8B0A4',
+  dark: '#D8CFC2',
+  darker: '#F5EFE6',
 };
 
 export const FONTS = {

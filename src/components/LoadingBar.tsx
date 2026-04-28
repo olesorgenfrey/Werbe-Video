@@ -13,15 +13,11 @@ export const LoadingBar: React.FC<LoadingBarProps> = ({
   localFrame,
   totalFrames,
 }) => {
-  const barWidth = 600;
-
-  // Quickly fills to targetPercent then freezes / wobbles slightly
   const fillProgress = interpolate(localFrame, [0, totalFrames * 0.4], [0, targetPercent], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
 
-  // Subtle stuck wobble after fill
   const wobble = localFrame > totalFrames * 0.4
     ? Math.sin(localFrame * 0.6) * 0.8
     : 0;
@@ -34,10 +30,10 @@ export const LoadingBar: React.FC<LoadingBarProps> = ({
       <div
         style={{
           width: 680,
-          backgroundColor: '#1A1A1A',
+          backgroundColor: '#D8CFC2',
           borderRadius: 16,
           overflow: 'hidden',
-          border: '1px solid #2A2A2A',
+          border: `1px solid ${COLORS.dark}`,
         }}
       >
         {/* Title bar */}
@@ -46,7 +42,7 @@ export const LoadingBar: React.FC<LoadingBarProps> = ({
             display: 'flex',
             alignItems: 'center',
             padding: '16px 20px',
-            borderBottom: '1px solid #222',
+            borderBottom: `1px solid ${COLORS.dark}`,
             gap: 10,
           }}
         >
@@ -57,7 +53,7 @@ export const LoadingBar: React.FC<LoadingBarProps> = ({
             style={{
               flex: 1,
               height: 32,
-              backgroundColor: '#252525',
+              backgroundColor: COLORS.bg,
               borderRadius: 8,
               marginLeft: 10,
               display: 'flex',
@@ -65,19 +61,19 @@ export const LoadingBar: React.FC<LoadingBarProps> = ({
               paddingLeft: 14,
             }}
           >
-            <span style={{ color: '#555', fontSize: 18, fontFamily: 'monospace' }}>
+            <span style={{ color: COLORS.gray, fontSize: 18, fontFamily: 'monospace' }}>
               meinewebsite.de
             </span>
           </div>
         </div>
 
         {/* Loading content area */}
-        <div style={{ padding: '40px 30px', minHeight: 140 }}>
+        <div style={{ padding: '40px 30px', minHeight: 140, backgroundColor: COLORS.bg }}>
           <div
             style={{
               width: '100%',
               height: 12,
-              backgroundColor: '#222',
+              backgroundColor: COLORS.dark,
               borderRadius: 6,
               overflow: 'hidden',
             }}
@@ -96,7 +92,7 @@ export const LoadingBar: React.FC<LoadingBarProps> = ({
           <div
             style={{
               marginTop: 16,
-              color: '#555',
+              color: COLORS.gray,
               fontSize: 20,
               fontFamily: 'monospace',
               textAlign: 'center',

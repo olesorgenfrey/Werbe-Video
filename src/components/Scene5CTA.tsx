@@ -158,7 +158,7 @@ export const Scene5CTA: React.FC = () => {
           opacity: badgeOpacity,
           transform: `translateY(${badgeY}px)`,
           padding: '18px 40px',
-          background: `linear-gradient(135deg, ${COLORS.accent}, #1D4ED8)`,
+          backgroundColor: COLORS.accent,
           borderRadius: 100,
           boxShadow: `0 0 40px ${COLORS.accent}55`,
           display: 'flex',

@@ -6,7 +6,7 @@ interface GlitchOverlayProps {
   durationFrames?: number;
 }
 
-// Digital glitch transition — RGB split slices
+// Digital glitch transition — accent-tinted split slices
 export const GlitchOverlay: React.FC<GlitchOverlayProps> = ({
   startFrame,
   durationFrames = 12,
@@ -16,9 +16,8 @@ export const GlitchOverlay: React.FC<GlitchOverlayProps> = ({
   if (localFrame < 0 || localFrame > durationFrames) return null;
 
   const progress = localFrame / durationFrames;
-  const intensity = Math.sin(progress * Math.PI); // peaks in middle
+  const intensity = Math.sin(progress * Math.PI);
 
-  // Generate pseudo-random slice data derived from frame number
   const slices = Array.from({ length: 8 }, (_, i) => {
     const seed = (localFrame * 13 + i * 37) % 100;
     return {
@@ -36,24 +35,24 @@ export const GlitchOverlay: React.FC<GlitchOverlayProps> = ({
 
   return (
     <AbsoluteFill style={{ pointerEvents: 'none', zIndex: 100, opacity: overallOpacity }}>
-      {/* Red channel shift */}
+      {/* Warm channel shift left */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: 'rgba(255,0,0,0.08)',
+          backgroundColor: 'rgba(196,81,45,0.07)',
           transform: `translateX(${8 * intensity}px)`,
-          mixBlendMode: 'screen',
+          mixBlendMode: 'multiply',
         }}
       />
-      {/* Blue channel shift */}
+      {/* Warm channel shift right */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: 'rgba(0,100,255,0.08)',
+          backgroundColor: 'rgba(196,81,45,0.05)',
           transform: `translateX(${-8 * intensity}px)`,
-          mixBlendMode: 'screen',
+          mixBlendMode: 'multiply',
         }}
       />
       {/* Horizontal scan slices */}
@@ -66,7 +65,7 @@ export const GlitchOverlay: React.FC<GlitchOverlayProps> = ({
             left: 0,
             right: 0,
             height: `${slice.height}px`,
-            backgroundColor: 'rgba(59,130,246,0.15)',
+            backgroundColor: 'rgba(196,81,45,0.12)',
             transform: `translateX(${slice.offsetX}px)`,
             opacity: slice.opacity,
           }}
@@ -77,8 +76,8 @@ export const GlitchOverlay: React.FC<GlitchOverlayProps> = ({
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: '#FFF',
-          opacity: localFrame === 0 ? 0.4 : localFrame === 1 ? 0.2 : 0,
+          backgroundColor: '#1A1A1A',
+          opacity: localFrame === 0 ? 0.35 : localFrame === 1 ? 0.15 : 0,
         }}
       />
     </AbsoluteFill>

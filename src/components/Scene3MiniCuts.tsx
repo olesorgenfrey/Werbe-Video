@@ -92,18 +92,18 @@ const MouseLeave: React.FC<{ localFrame: number }> = ({ localFrame }) => {
       style={{
         width: 680,
         height: 220,
-        backgroundColor: '#111118',
+        backgroundColor: COLORS.bg,
         borderRadius: 16,
-        border: '1px solid #2A2A3A',
+        border: `1px solid ${COLORS.dark}`,
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       {/* Fake page content */}
       <div style={{ padding: '20px 24px' }}>
-        <div style={{ width: 200, height: 20, backgroundColor: '#222', borderRadius: 4, marginBottom: 12 }} />
-        <div style={{ width: '80%', height: 12, backgroundColor: '#1A1A1A', borderRadius: 4, marginBottom: 8 }} />
-        <div style={{ width: '60%', height: 12, backgroundColor: '#1A1A1A', borderRadius: 4, marginBottom: 24 }} />
+        <div style={{ width: 200, height: 20, backgroundColor: COLORS.dark, borderRadius: 4, marginBottom: 12 }} />
+        <div style={{ width: '80%', height: 12, backgroundColor: COLORS.dark, borderRadius: 4, marginBottom: 8 }} />
+        <div style={{ width: '60%', height: 12, backgroundColor: COLORS.dark, borderRadius: 4, marginBottom: 24 }} />
         {/* Ghost button */}
         <div
           style={{
@@ -111,7 +111,7 @@ const MouseLeave: React.FC<{ localFrame: number }> = ({ localFrame }) => {
             padding: '10px 24px',
             backgroundColor: COLORS.accent,
             borderRadius: 8,
-            color: '#FFF',
+            color: COLORS.bg,
             fontSize: 16,
             fontWeight: 600,
           }}
@@ -128,10 +128,10 @@ const MouseLeave: React.FC<{ localFrame: number }> = ({ localFrame }) => {
           transform: 'translateY(-50%)',
           width: 0,
           height: 0,
-          borderLeft: '14px solid #FFF',
+          borderLeft: `14px solid ${COLORS.text}`,
           borderTop: '8px solid transparent',
           borderBottom: '8px solid transparent',
-          filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.4))',
+          filter: `drop-shadow(0 0 6px ${COLORS.accent}66)`,
         }}
       />
       {/* Leaving indicator */}
@@ -142,7 +142,7 @@ const MouseLeave: React.FC<{ localFrame: number }> = ({ localFrame }) => {
           right: 0,
           width: interpolate(cursorX, [400, 900], [0, 200], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }),
           height: '100%',
-          background: 'linear-gradient(to left, rgba(239,68,68,0.15), transparent)',
+          background: `linear-gradient(to left, rgba(196,81,45,0.15), transparent)`,
           pointerEvents: 'none',
         }}
       />
