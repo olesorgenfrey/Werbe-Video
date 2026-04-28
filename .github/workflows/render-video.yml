@@ -2,6 +2,9 @@ name: Video rendern & herunterladen
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   render:
