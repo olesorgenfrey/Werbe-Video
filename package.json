@@ -6,7 +6,7 @@
   "scripts": {
     "start": "remotion studio",
     "build": "remotion render WebsiteHookIntro out/WebsiteHookIntro.mp4",
-    "render": "remotion render WebsiteHookIntro out/WebsiteHookIntro.mp4",
+    "render": "remotion render WebsiteHookIntro out/WebsiteHookIntro.mp4 --gl=angle",
     "preview:build": "vite build"
   },
   "remotion": {

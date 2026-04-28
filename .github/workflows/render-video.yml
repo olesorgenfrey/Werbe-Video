@@ -1,0 +1,42 @@
+name: Video rendern & herunterladen
+
+on:
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: System-Abhängigkeiten für Chrome installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
+            libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 \
+            libxfixes3 libxrandr2 libgbm1 libasound2 \
+            libpango-1.0-0 libcairo2
+
+      - name: npm-Pakete installieren
+        run: npm ci
+
+      - name: Video rendern
+        run: |
+          mkdir -p out
+          npm run render
+
+      - name: Video als Artifact hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: WebsiteHookIntro
+          path: out/WebsiteHookIntro.mp4
+          retention-days: 7
