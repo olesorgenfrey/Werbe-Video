@@ -3,7 +3,7 @@ name: Deploy Preview to GitHub Pages
 on:
   push:
     branches:
-      - claude/remotion-tiktok-video-ZlxJr
+      - main
 
 permissions:
   contents: read
