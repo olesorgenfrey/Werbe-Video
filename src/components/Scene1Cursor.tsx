@@ -3,9 +3,9 @@ import { AbsoluteFill, useCurrentFrame, interpolate } from 'remotion';
 import { COLORS, FONTS } from '../constants';
 
 const FULL_TEXT = 'Deine Website...';
-// Typing covers frames 0-24 (chars appear every 1.5 frames), cursor blinks until end
+// Typing covers frames 0-40, cursor blinks until end of scene (60 frames)
 const CHARS = FULL_TEXT.length; // 16
-const FRAMES_PER_CHAR = 1.4;
+const FRAMES_PER_CHAR = 2.5;
 
 export const Scene1Cursor: React.FC = () => {
   const frame = useCurrentFrame();

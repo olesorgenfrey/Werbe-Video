@@ -18,21 +18,21 @@ export const Scene5CTA: React.FC = () => {
     from: 0.85,
     to: 1,
   });
-  const headlineOpacity = interpolate(localFrame, [0, 12], [0, 1], {
+  const headlineOpacity = interpolate(localFrame, [0, 16], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
 
   // Accent underline animates after headline
-  const UNDERLINE_START = 12;
-  const underlineWidth = interpolate(localFrame, [UNDERLINE_START, UNDERLINE_START + 22], [0, 820], {
+  const UNDERLINE_START = 16;
+  const underlineWidth = interpolate(localFrame, [UNDERLINE_START, UNDERLINE_START + 28], [0, 820], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
 
   // Subtext words stagger in
-  const SUBTEXT_START = 20;
-  const subtextOpacity = interpolate(localFrame, [SUBTEXT_START, SUBTEXT_START + 12], [0, 1], {
+  const SUBTEXT_START = 30;
+  const subtextOpacity = interpolate(localFrame, [SUBTEXT_START, SUBTEXT_START + 16], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
@@ -46,14 +46,14 @@ export const Scene5CTA: React.FC = () => {
 
   // Glow pulse
   const glowOpacity = interpolate(
-    (localFrame % 40) / 40,
+    (localFrame % 50) / 50,
     [0, 0.5, 1],
     [0.4, 0.8, 0.4],
   );
 
   // Bottom badge / tag
-  const BADGE_START = 32;
-  const badgeOpacity = interpolate(localFrame, [BADGE_START, BADGE_START + 14], [0, 1], {
+  const BADGE_START = 48;
+  const badgeOpacity = interpolate(localFrame, [BADGE_START, BADGE_START + 18], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });

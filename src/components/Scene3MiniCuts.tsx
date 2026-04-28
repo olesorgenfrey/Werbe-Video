@@ -5,8 +5,8 @@ import { LoadingBar } from './LoadingBar';
 import { FakeWebsiteOld } from './FakeWebsiteOld';
 import { Headline } from './Typography';
 
-// 3 mini-scenes each ~20 frames (0.67s)
-const MINI_DURATION = 20;
+// 3 mini-scenes each 50 frames (1.67s) – 150 frames total
+const MINI_DURATION = 50;
 const MINI_SCENES = [
   { label: 'Langsam.', startFrame: 0 },
   { label: 'Unmodern.', startFrame: MINI_DURATION },
@@ -22,7 +22,7 @@ interface MiniSceneWrapperProps {
 const MiniSceneWrapper: React.FC<MiniSceneWrapperProps> = ({ localFrame, label, children }) => {
   const { fps } = useVideoConfig();
 
-  const opacity = interpolate(localFrame, [0, 4, MINI_DURATION - 4, MINI_DURATION], [0, 1, 1, 0], {
+  const opacity = interpolate(localFrame, [0, 6, MINI_DURATION - 6, MINI_DURATION], [0, 1, 1, 0], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
@@ -37,12 +37,12 @@ const MiniSceneWrapper: React.FC<MiniSceneWrapperProps> = ({ localFrame, label, 
 
   const labelY = spring({
     fps,
-    frame: Math.max(0, localFrame - 6),
+    frame: Math.max(0, localFrame - 10),
     config: { damping: 18, stiffness: 200, mass: 0.5 },
     from: 30,
     to: 0,
   });
-  const labelOpacity = interpolate(localFrame, [6, 14], [0, 1], {
+  const labelOpacity = interpolate(localFrame, [10, 22], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });

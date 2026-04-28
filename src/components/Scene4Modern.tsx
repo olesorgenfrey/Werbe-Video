@@ -10,18 +10,18 @@ export const Scene4Modern: React.FC = () => {
   const { fps } = useVideoConfig();
   const localFrame = frame - SCENES.s4Start;
 
-  // Glitch transition at start (frames 0-12)
-  const GLITCH_END = 12;
-  const CONTENT_START = 10;
+  // Glitch transition at start (frames 0-14)
+  const GLITCH_END = 14;
+  const CONTENT_START = 12;
 
-  const contentOpacity = interpolate(localFrame, [CONTENT_START, CONTENT_START + 10], [0, 1], {
+  const contentOpacity = interpolate(localFrame, [CONTENT_START, CONTENT_START + 14], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
 
-  // "Das geht besser." text
-  const TEXT_START = 28;
-  const textOpacity = interpolate(localFrame, [TEXT_START, TEXT_START + 10], [0, 1], {
+  // "Das geht besser." text – appears after site has assembled
+  const TEXT_START = 46;
+  const textOpacity = interpolate(localFrame, [TEXT_START, TEXT_START + 14], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
@@ -34,14 +34,14 @@ export const Scene4Modern: React.FC = () => {
   });
 
   // Accent underline
-  const UNDERLINE_START = TEXT_START + 8;
-  const underlineWidth = interpolate(localFrame, [UNDERLINE_START, UNDERLINE_START + 18], [0, 560], {
+  const UNDERLINE_START = TEXT_START + 10;
+  const underlineWidth = interpolate(localFrame, [UNDERLINE_START, UNDERLINE_START + 22], [0, 560], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
 
-  // Scene fade out
-  const overallOpacity = interpolate(localFrame, [54, 60], [1, 0], {
+  // Scene fade out (90 frames total)
+  const overallOpacity = interpolate(localFrame, [82, 90], [1, 0], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });

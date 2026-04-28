@@ -11,15 +11,15 @@ export const Scene2Problem: React.FC = () => {
   // Local frame within scene (scene starts at SCENES.s2Start)
   const localFrame = frame - SCENES.s2Start;
 
-  // Backspace phase: frames 0-10 → delete all 16 chars
-  const backspacePhaseEnd = 12;
+  // Backspace phase: frames 0-18 → delete all 16 chars
+  const backspacePhaseEnd = 18;
   const deletedChars = Math.min(FULL_TEXT.length, Math.floor(localFrame / (backspacePhaseEnd / FULL_TEXT.length)));
   const remainingText = FULL_TEXT.slice(0, FULL_TEXT.length - deletedChars);
 
-  // New text phase: starts at frame 14
-  const newTextStart = 14;
+  // New text phase: starts at frame 24, each char every ~2 frames → done by frame ~68
+  const newTextStart = 24;
   const newTextLocalFrame = Math.max(0, localFrame - newTextStart);
-  const newCharsVisible = Math.min(NEW_TEXT.length, Math.floor(newTextLocalFrame / 1.2));
+  const newCharsVisible = Math.min(NEW_TEXT.length, Math.floor(newTextLocalFrame / 2.0));
   const displayNewText = NEW_TEXT.slice(0, newCharsVisible);
   const showNewText = localFrame >= newTextStart;
 
@@ -43,7 +43,8 @@ export const Scene2Problem: React.FC = () => {
   const cursorVisible = Math.floor(localFrame / 7) % 2 === 0;
   const showCursor = !showNewText || newCharsVisible < NEW_TEXT.length;
 
-  const overallOpacity = interpolate(localFrame, [26, 30], [1, 0], {
+  // Fade out at end of scene (90 frames total)
+  const overallOpacity = interpolate(localFrame, [82, 90], [1, 0], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
@@ -132,7 +133,7 @@ export const Scene2Problem: React.FC = () => {
                 height: 6,
                 backgroundColor: '#EF4444',
                 borderRadius: 3,
-                width: interpolate(localFrame, [newTextStart + NEW_TEXT.length * 1.2, newTextStart + NEW_TEXT.length * 1.2 + 10], [0, 700], {
+                width: interpolate(localFrame, [newTextStart + NEW_TEXT.length * 2.0, newTextStart + NEW_TEXT.length * 2.0 + 16], [0, 700], {
                   extrapolateLeft: 'clamp',
                   extrapolateRight: 'clamp',
                 }),
