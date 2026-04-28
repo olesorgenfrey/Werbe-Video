@@ -5,24 +5,24 @@ import { LoadingBar } from './LoadingBar';
 import { FakeWebsiteOld } from './FakeWebsiteOld';
 import { Headline } from './Typography';
 
-// 3 mini-scenes each 50 frames (1.67s) – 150 frames total
-const MINI_DURATION = 50;
+// Per-scene durations (frames): Langsam 30, Unmodern 60, Unsichtbar 45
 const MINI_SCENES = [
-  { label: 'Langsam.', startFrame: 0 },
-  { label: 'Unmodern.', startFrame: MINI_DURATION },
-  { label: 'Unsichtbar.', startFrame: MINI_DURATION * 2 },
+  { label: 'Langsam.',    startFrame: 0,   duration: 30 },
+  { label: 'Unmodern.',   startFrame: 30,  duration: 60 },
+  { label: 'Unsichtbar.', startFrame: 90,  duration: 45 },
 ];
 
 interface MiniSceneWrapperProps {
   localFrame: number;
+  duration: number;
   label: string;
   children: React.ReactNode;
 }
 
-const MiniSceneWrapper: React.FC<MiniSceneWrapperProps> = ({ localFrame, label, children }) => {
+const MiniSceneWrapper: React.FC<MiniSceneWrapperProps> = ({ localFrame, duration, label, children }) => {
   const { fps } = useVideoConfig();
 
-  const opacity = interpolate(localFrame, [0, 6, MINI_DURATION - 6, MINI_DURATION], [0, 1, 1, 0], {
+  const opacity = interpolate(localFrame, [0, 6, duration - 6, duration], [0, 1, 1, 0], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
@@ -79,9 +79,9 @@ const MiniSceneWrapper: React.FC<MiniSceneWrapperProps> = ({ localFrame, label, 
 };
 
 // Mini-scene 3: cursor leaving (mouse click visual)
-const MouseLeave: React.FC<{ localFrame: number }> = ({ localFrame }) => {
+const MouseLeave: React.FC<{ localFrame: number; totalFrames: number }> = ({ localFrame, totalFrames }) => {
   const { fps } = useVideoConfig();
-  const cursorX = interpolate(localFrame, [0, MINI_DURATION], [500, 900], {
+  const cursorX = interpolate(localFrame, [0, totalFrames], [500, 900], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
     easing: (t) => t * t,
@@ -156,19 +156,19 @@ export const Scene3MiniCuts: React.FC = () => {
 
   return (
     <>
-      {localFrame >= MINI_SCENES[0].startFrame && localFrame < MINI_SCENES[0].startFrame + MINI_DURATION && (
-        <MiniSceneWrapper localFrame={localFrame - MINI_SCENES[0].startFrame} label="Langsam.">
-          <LoadingBar targetPercent={23} localFrame={localFrame - MINI_SCENES[0].startFrame} totalFrames={MINI_DURATION} />
+      {localFrame >= MINI_SCENES[0].startFrame && localFrame < MINI_SCENES[0].startFrame + MINI_SCENES[0].duration && (
+        <MiniSceneWrapper localFrame={localFrame - MINI_SCENES[0].startFrame} duration={MINI_SCENES[0].duration} label="Langsam.">
+          <LoadingBar targetPercent={23} localFrame={localFrame - MINI_SCENES[0].startFrame} totalFrames={MINI_SCENES[0].duration} />
         </MiniSceneWrapper>
       )}
-      {localFrame >= MINI_SCENES[1].startFrame && localFrame < MINI_SCENES[1].startFrame + MINI_DURATION && (
-        <MiniSceneWrapper localFrame={localFrame - MINI_SCENES[1].startFrame} label="Unmodern.">
+      {localFrame >= MINI_SCENES[1].startFrame && localFrame < MINI_SCENES[1].startFrame + MINI_SCENES[1].duration && (
+        <MiniSceneWrapper localFrame={localFrame - MINI_SCENES[1].startFrame} duration={MINI_SCENES[1].duration} label="Unmodern.">
           <FakeWebsiteOld />
         </MiniSceneWrapper>
       )}
-      {localFrame >= MINI_SCENES[2].startFrame && localFrame < MINI_SCENES[2].startFrame + MINI_DURATION && (
-        <MiniSceneWrapper localFrame={localFrame - MINI_SCENES[2].startFrame} label="Unsichtbar.">
-          <MouseLeave localFrame={localFrame - MINI_SCENES[2].startFrame} />
+      {localFrame >= MINI_SCENES[2].startFrame && localFrame < MINI_SCENES[2].startFrame + MINI_SCENES[2].duration && (
+        <MiniSceneWrapper localFrame={localFrame - MINI_SCENES[2].startFrame} duration={MINI_SCENES[2].duration} label="Unsichtbar.">
+          <MouseLeave localFrame={localFrame - MINI_SCENES[2].startFrame} totalFrames={MINI_SCENES[2].duration} />
         </MiniSceneWrapper>
       )}
     </>

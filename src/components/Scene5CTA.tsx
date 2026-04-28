@@ -30,8 +30,8 @@ export const Scene5CTA: React.FC = () => {
     extrapolateRight: 'clamp',
   });
 
-  // Subtext words stagger in
-  const SUBTEXT_START = 30;
+  // Subtext words stagger in (frame 390 = localFrame 90)
+  const SUBTEXT_START = 90;
   const subtextOpacity = interpolate(localFrame, [SUBTEXT_START, SUBTEXT_START + 16], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
@@ -51,8 +51,8 @@ export const Scene5CTA: React.FC = () => {
     [0.4, 0.8, 0.4],
   );
 
-  // Bottom badge / tag
-  const BADGE_START = 48;
+  // Bottom badge / tag (frame 450 = localFrame 150)
+  const BADGE_START = 150;
   const badgeOpacity = interpolate(localFrame, [BADGE_START, BADGE_START + 18], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
