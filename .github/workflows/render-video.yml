@@ -35,12 +35,6 @@ jobs:
       - name: Chrome herunterladen
         run: npx remotion browser ensure
 
-      - name: Voice-Over generieren
-        env:
-          FISH_API_KEY: ${{ secrets.FISH_API_KEY }}
-          FISH_VOICE_ID: ${{ secrets.FISH_VOICE_ID }}
-        run: node scripts/generate-voiceover.mjs
-
       - name: Video rendern
         run: |
           mkdir -p out
